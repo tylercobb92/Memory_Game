@@ -61,7 +61,10 @@ function createDivsForColors(colorArray) {
 function handleCardClick(e) {
     // you can use e.target to see which element was clicked
     console.log(e.target.className);
-    e.target.style.backgroundColor = e.target.className;
+    if (e.target.className != "flipped") {
+        e.target.style.backgroundColor = e.target.className;
+        e.target.classList.add("flipped");
+    }
 }
 
 // when the DOM loads
