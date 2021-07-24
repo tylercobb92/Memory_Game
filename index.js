@@ -80,7 +80,6 @@ function handleCardClick(e) {
                 alert("GAME OVER");
             }
         } else if (cardOne.style.backgroundColor != cardTwo.style.backgroundColor) {
-            console.log("no match");
             setTimeout(noMatch, 1000)
         }
     }
