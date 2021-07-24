@@ -51,6 +51,12 @@ function createDivsForColors(colorArray) {
 
 let cardOne
 let cardTwo
+function noMatch() {
+    cardOne.style.backgroundColor = "white";
+    cardTwo.style.backgroundColor = "white";
+    cardOne = undefined;
+    cardTwo = undefined;
+}
 // TODO: Implement this function!
 function handleCardClick(e) {
     if (!cardOne && !cardTwo && !e.target.classList.contains("matched")) {
@@ -69,18 +75,15 @@ function handleCardClick(e) {
             cardTwo = undefined;
         } else if (cardOne.style.backgroundColor != cardTwo.style.backgroundColor) {
             console.log("no match");
-            cardOne.style.backgroundColor = "white";
-            cardTwo.style.backgroundColor = "white";
-            cardOne = undefined;
-            cardTwo = undefined;
+            setTimeout(noMatch, 1000)
         }
+        // cardTwo.addEventListener("")
+        // if (cardOne.style.backgroundColor != cardTwo.style.backgroundColor) {
+        //     cardOne.style.backgrounColor = "white"
+        //     cardOne.classList.remove("flipped");
+        // }
     }
-    // cardTwo.addEventListener("")
-    // if (cardOne.style.backgroundColor != cardTwo.style.backgroundColor) {
-    //     cardOne.style.backgrounColor = "white"
-    //     cardOne.classList.remove("flipped");
-    // }
 }
+
 // when the DOM loads
 createDivsForColors(shuffledColors);
-
