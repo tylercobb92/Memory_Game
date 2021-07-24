@@ -99,9 +99,10 @@ startButton.addEventListener("click", function () {
     startButton.style.display = "none";
     startGame();
 });
+
 restartButton.addEventListener("click", function () {
-    let oldGame = document.getElementById("game");
-    oldGame.removeChild("div");
-    startGame();
+    let oldGame = document.querySelector("#game");
+    let oldMatches = document.querySelectorAll(".matched")
+    oldGame.removeChild(oldMatches);
     restartButton.style.display = "none";
 });
