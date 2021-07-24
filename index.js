@@ -49,14 +49,21 @@ function createDivsForColors(colorArray) {
     }
 }
 
+let cardOne
+let cardTwo
 // TODO: Implement this function!
 function handleCardClick(e) {
-    // you can use e.target to see which element was clicked
     // console.log(e.target.className);
-    if (e.target.className != "flipped") {
+    if (e.target.className != "flipped" && cardOne == null) {
         e.target.style.backgroundColor = e.target.className;
         e.target.classList.add("flipped");
+        cardOne = e.target;
+    } else if (e.target.className != "flipped" && cardOne !== null) {
+        e.target.style.backgroundColor = e.target.className;
+        e.target.classList.add("flipped");
+        cardTwo = e.target;
     }
 }
 // when the DOM loads
 createDivsForColors(shuffledColors);
+
