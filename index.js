@@ -99,4 +99,9 @@ startButton.addEventListener("click", function () {
     startButton.style.display = "none";
     startGame();
 });
-restartButton.addEventListener("click", startGame);
+restartButton.addEventListener("click", function () {
+    let oldGame = document.getElementById("game");
+    oldGame.removeChild("div");
+    startGame();
+    restartButton.style.display = "none";
+});
