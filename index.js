@@ -53,16 +53,33 @@ let cardOne
 let cardTwo
 // TODO: Implement this function!
 function handleCardClick(e) {
-    // console.log(e.target.className);
-    if (e.target.className != "flipped" && cardOne == null) {
+    if (!cardOne && !cardTwo && !e.target.classList.contains("matched")) {
         e.target.style.backgroundColor = e.target.className;
-        e.target.classList.add("flipped");
         cardOne = e.target;
-    } else if (e.target.className != "flipped" && cardOne !== null) {
+    } else if (cardOne && !cardTwo) {
         e.target.style.backgroundColor = e.target.className;
-        e.target.classList.add("flipped");
         cardTwo = e.target;
     }
+
+    if (cardOne && cardTwo) {
+        if (cardOne.style.backgroundColor === cardTwo.style.backgroundColor) {
+            cardOne.classList.add("matched");
+            cardTwo.classList.add("matched");
+            cardOne = undefined;
+            cardTwo = undefined;
+        } else if (cardOne.style.backgroundColor != cardTwo.style.backgroundColor) {
+            console.log("no match");
+            cardOne.style.backgroundColor = "white";
+            cardTwo.style.backgroundColor = "white";
+            cardOne = undefined;
+            cardTwo = undefined;
+        }
+    }
+    // cardTwo.addEventListener("")
+    // if (cardOne.style.backgroundColor != cardTwo.style.backgroundColor) {
+    //     cardOne.style.backgrounColor = "white"
+    //     cardOne.classList.remove("flipped");
+    // }
 }
 // when the DOM loads
 createDivsForColors(shuffledColors);
