@@ -57,6 +57,7 @@ function noMatch() {
     cardOne = undefined;
     cardTwo = undefined;
 }
+
 // TODO: Implement this function!
 function handleCardClick(e) {
     if (!cardOne && !cardTwo && !e.target.classList.contains("matched")) {
@@ -73,17 +74,17 @@ function handleCardClick(e) {
             cardTwo.classList.add("matched");
             cardOne = undefined;
             cardTwo = undefined;
+            if (COLORS.length === document.querySelectorAll(".matched").length) {
+                alert("GAME OVER");
+            }
         } else if (cardOne.style.backgroundColor != cardTwo.style.backgroundColor) {
             console.log("no match");
             setTimeout(noMatch, 1000)
         }
-        // cardTwo.addEventListener("")
-        // if (cardOne.style.backgroundColor != cardTwo.style.backgroundColor) {
-        //     cardOne.style.backgrounColor = "white"
-        //     cardOne.classList.remove("flipped");
-        // }
     }
 }
+
+
 
 // when the DOM loads
 createDivsForColors(shuffledColors);
