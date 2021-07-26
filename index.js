@@ -1,5 +1,9 @@
 const startButton = document.getElementById("start");
 const restartButton = document.getElementById("restart");
+// let score = document.getElementById("scoreboard");
+let score = 0;
+// score.textContent = "Score: " + score;
+
 
 function startGame() {
 
@@ -56,6 +60,7 @@ function startGame() {
         }
     }
 
+    document.getElementById("scoreboard").textContent = "Score: " + 0
     let cardOne
     let cardTwo
     function noMatch() {
@@ -79,6 +84,8 @@ function startGame() {
             if (cardOne.style.backgroundColor === cardTwo.style.backgroundColor) {
                 cardOne.classList.add("matched");
                 cardTwo.classList.add("matched");
+                score += 1;
+                document.getElementById("scoreboard").textContent = "Score: " + score
                 cardOne = undefined;
                 cardTwo = undefined;
                 if (COLORS.length === document.querySelectorAll(".matched").length) {
@@ -86,7 +93,9 @@ function startGame() {
                     restartButton.style.display = "block"
                 }
             } else if (cardOne.style.backgroundColor != cardTwo.style.backgroundColor) {
-                setTimeout(noMatch, 1000)
+                setTimeout(noMatch, 1000);
+                score += 1;
+                document.getElementById("scoreboard").textContent = "Score: " + score
             }
         }
     }
@@ -98,6 +107,7 @@ function startGame() {
 startButton.addEventListener("click", function () {
     startButton.style.display = "none";
     startGame();
+
 });
 
 restartButton.addEventListener("click", function () {
@@ -108,3 +118,5 @@ restartButton.addEventListener("click", function () {
     startGame();
     restartButton.style.display = "none";
 });
+
+
