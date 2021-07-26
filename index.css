@@ -10,9 +10,10 @@ h1 {
   text-align: center;
 }
 
-#start {
-}
-
 #restart {
   display: none;
+}
+
+#scoreboard {
+  text-align: center;
 }
