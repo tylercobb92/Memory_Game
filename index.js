@@ -101,8 +101,10 @@ startButton.addEventListener("click", function () {
 });
 
 restartButton.addEventListener("click", function () {
-    let oldGame = document.querySelector("#game");
-    let oldMatches = document.querySelectorAll(".matched")
-    oldGame.removeChild(oldMatches);
+    let oldGame = document.getElementById("game");
+    while (oldGame.firstChild) {
+        oldGame.removeChild(oldGame.firstChild)
+    }
+    startGame();
     restartButton.style.display = "none";
 });
