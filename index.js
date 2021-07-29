@@ -1,12 +1,14 @@
 const startButton = document.getElementById("start");
 const restartButton = document.getElementById("restart");
-// let score = document.getElementById("scoreboard");
 let score = 0;
-// score.textContent = "Score: " + score;
-
+let lowscore;
+let theChamp = document.getElementById("lowscore")
 
 function startGame() {
 
+    if (localStorage.lowscore) {
+        theChamp.innerText = "Low Score: " + localStorage.lowscore;
+    }
     const gameContainer = document.getElementById("game");
 
     const COLORS = [
@@ -90,6 +92,13 @@ function startGame() {
                 cardTwo = undefined;
                 if (COLORS.length === document.querySelectorAll(".matched").length) {
                     alert("GAME OVER");
+                    if (!localStorage.lowscore) {
+                        localStorage.setItem("lowscore", score);
+                        theChamp.innerText = "Low Score: " + localStorage.lowscore;
+                    } else if (score < localStorage.lowscore) {
+                        localStorage.setItem("lowscore", score);
+                        theChamp.innerText = "Low Score: " + localStorage.lowscore;
+                    }
                     restartButton.style.display = "block"
                 }
             } else if (cardOne.style.backgroundColor != cardTwo.style.backgroundColor) {
@@ -107,7 +116,6 @@ function startGame() {
 startButton.addEventListener("click", function () {
     startButton.style.display = "none";
     startGame();
-
 });
 
 restartButton.addEventListener("click", function () {
@@ -115,14 +123,7 @@ restartButton.addEventListener("click", function () {
     while (oldGame.firstChild) {
         oldGame.removeChild(oldGame.firstChild)
     }
+    score = 0;
     startGame();
     restartButton.style.display = "none";
 });
-
-
-document.addEventListener("click", function (e) {
-    if (e.target.classList.contains("matched")) {
-        e.preventDefault();
-        console.log("already matched")
-    }
-})
