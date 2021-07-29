@@ -1,17 +1,50 @@
+body {
+  font-family: "Press Start 2P", cursive;
+}
+
+button {
+  font-family: "Press Start 2P", cursive;
+}
+
+#game {
+  width: 90vw;
+  margin-left: 5vw;
+}
+
 #game div {
   border: 1px solid black;
   width: 15%;
   height: 200px;
   margin: 10px;
   display: inline-block;
+  z-index: 1;
+  border-radius: 5px;
 }
 
 h1 {
   text-align: center;
 }
 
+#start {
+  border-radius: 5px;
+  position: absolute;
+  width: 20vw;
+  height: 10vw;
+  margin-left: 40vw;
+  margin-top: 9vw;
+  font-size: xx-large;
+}
+
 #restart {
   display: none;
+  border-radius: 5px;
+  position: absolute;
+  width: 20vw;
+  height: 10vw;
+  margin-left: 40vw;
+  margin-top: 9vw;
+  font-size: xx-large;
+  z-index: 2;
 }
 
 #scoreboard {
@@ -20,4 +53,15 @@ h1 {
 
 #lowscore {
   text-align: center;
+}
+
+#gameover {
+  display: none;
+  position: absolute;
+  color: white;
+  text-align: center;
+  width: 100vw;
+  background-color: black;
+  margin-top: 5vw;
+  z-index: 2;
 }

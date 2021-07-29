@@ -1,5 +1,6 @@
 const startButton = document.getElementById("start");
 const restartButton = document.getElementById("restart");
+const gameOver = document.getElementById("gameover");
 let score = 0;
 let lowscore;
 let theChamp = document.getElementById("lowscore")
@@ -91,7 +92,6 @@ function startGame() {
                 cardOne = undefined;
                 cardTwo = undefined;
                 if (COLORS.length === document.querySelectorAll(".matched").length) {
-                    alert("GAME OVER");
                     if (!localStorage.lowscore) {
                         localStorage.setItem("lowscore", score);
                         theChamp.innerText = "Low Score: " + localStorage.lowscore;
@@ -99,7 +99,11 @@ function startGame() {
                         localStorage.setItem("lowscore", score);
                         theChamp.innerText = "Low Score: " + localStorage.lowscore;
                     }
-                    restartButton.style.display = "block"
+                    restartButton.style.display = "block";
+                    restartButton.style.opacity = 1;
+                    gameOver.style.display = "block";
+                    gameOver.style.opacity = 1;
+                    gameContainer.style.opacity = .5;
                 }
             } else if (cardOne.style.backgroundColor != cardTwo.style.backgroundColor) {
                 setTimeout(noMatch, 1000);
@@ -126,4 +130,5 @@ restartButton.addEventListener("click", function () {
     score = 0;
     startGame();
     restartButton.style.display = "none";
+    gameOver.style.display = "none";
 });
